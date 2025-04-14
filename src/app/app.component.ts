@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
+  standalone: true, // Mark as standalone
+  imports: [CommonModule, RouterOutlet],
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: ` <router-outlet></router-outlet> `,
+  styles: [],
 })
-export class AppComponent {
-  title = 'ia-tech-frontend';
-}
+export class AppComponent {}
