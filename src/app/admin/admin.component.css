@@ -1,0 +1,10 @@
+.admin-card {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+  .admin-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }

@@ -51,13 +51,29 @@ export class AuthService {
     return this.isAuthenticatedSubject.asObservable();
   }
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+
+
   getCurrentUserEmail(): string | null {
     const token = this.getToken();
     if (!token) return null;
     const payload = jwtDecode<TokenPayload>(token);
     return payload.sub;
   }
+  getCurrentUserRole(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+    
+    const decoded: any = jwtDecode(token);
+    return decoded.role; // Make sure your JWT includes the role
+  }
 
+  isAdmin(): boolean {
+    return this.getCurrentUserRole() === 'Admin';
+  }
   private checkToken(): void {
     const token = this.getToken();
     if (token) {

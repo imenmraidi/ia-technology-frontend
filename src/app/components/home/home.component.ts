@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   imports: [        // Add all required modules here
     CommonModule,
@@ -29,13 +29,12 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(private authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private router: Router
+  ) {}
 
-  get currentUserEmail(): string | null {
-    return this.authService.getCurrentUserEmail();
-  }
-
-  logout(): void {
-    this.authService.logout();
+  navigateToAdmin() {
+    this.router.navigate(['/admin']);
   }
 }
